@@ -28,7 +28,8 @@ class Header extends React.Component {
     backgroundColor: '#3F61E0',
     color:'white',
     height: '4vh',
-    boxShadow: '10px 10px 10px -10px rgba(0,0,0,0.75)'
+    boxShadow: '10px 10px 10px -10px rgba(0,0,0,0.75)',
+    outline:'none'
   }
   var heads = {
       display: 'flex',
@@ -41,7 +42,7 @@ class Header extends React.Component {
       justifyContent: 'space-around',
       alignItems: 'center',
       width: '90vw',
-      height: '25vh',
+      height: 'auto',
       marginBottom: '10px',
       marginTop: '10px',
       borderRadius: '15px',
@@ -49,11 +50,18 @@ class Header extends React.Component {
     }
     return (
       <div style={heads}>
-        <SearchBar HandleChange={this.props.HandleChange} MySearch={this.props.MySearch} style={shadow}/>
+        <SearchBar 
+          HandleChange={this.props.HandleChange} 
+          MySearch={this.props.MySearch} 
+          style={shadow}
+        />
         <img style={image} src='http://www.pngall.com/wp-content/uploads/2016/06/Pokemon-PNG-Pic.png'/>
         <div style={nonImage}>
           <Cart CheckOut={this.props.CheckOut}/>
-          <button onClick={()=>(this.props.CheckOut())} style={noMarg}>Check Out ({this.props.cart})</button>
+          <button 
+            onClick={()=>(this.props.CheckOut())} 
+            style={noMarg}>Check Out ({this.props.cart})
+          </button>
         </div>
       </div>
     )

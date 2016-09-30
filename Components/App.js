@@ -230,8 +230,23 @@ class App extends React.Component{
     }
     return (
       <div style={appy}>
-        <Header CheckOut={this.CheckOut.bind(this)} HandleChange={this.HandleChange.bind(this)} MySearch={this.MySearch.bind(this)} CheckOut={this.CheckOut.bind(this)} cart={this.state.cartCount}/>
-        <Body ClearCart={this.ClearCart.bind(this)} Creator={this.Creator.bind(this)} total={this.state.total} pokemon={this.state.pokemon} trueCart={this.state.trueCart} CartClass={this.state.cartClass} CheckOut={this.CheckOut.bind(this)} addMe={this.AddPokemon.bind(this)}/>
+        <Header 
+          CheckOut={this.CheckOut.bind(this)} 
+          HandleChange={this.HandleChange.bind(this)} 
+          MySearch={this.MySearch.bind(this)} 
+          CheckOut={this.CheckOut.bind(this)} 
+          cart={this.state.cartCount}
+        />
+        <Body 
+          ClearCart={this.ClearCart.bind(this)} 
+          Creator={this.Creator.bind(this)} 
+          total={this.state.total} 
+          pokemon={this.state.pokemon} 
+          trueCart={this.state.trueCart} 
+          CartClass={this.state.cartClass} 
+          CheckOut={this.CheckOut.bind(this)} 
+          addMe={this.AddPokemon.bind(this)}
+        />
       </div>
     )
   }

@@ -1,4 +1,4 @@
-import React from 'react';
+  import React from 'react';
 class SearchBar extends React.Component {
   constructor(props){
     super(props)
@@ -30,12 +30,18 @@ class SearchBar extends React.Component {
     }
     return(
       <div style={flex}>
-        <input onChange={this.props.HandleChange} style={style} type='text' placeholder='Search... '/>
-        <button onClick={function(){
-          setTimeout(
-            this.props.MySearch, 200
-          )}.bind(this)} 
-        style={myStyle}>Search</button>
+        <input 
+          onChange={this.props.HandleChange} 
+          style={style} 
+          type='text' 
+          placeholder='Search... '
+        />
+        <button 
+          onClick={function(){
+            setTimeout(this.props.MySearch, 200)}
+            .bind(this)} 
+          style={myStyle}>Search
+        </button>
       </div>
     ) 
   }

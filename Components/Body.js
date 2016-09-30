@@ -18,18 +18,28 @@ class Body extends React.Component {
       justifyContent: 'center'
     }
     return(
-    <div>
-    <div style={style}>
-      <CartScreen ClearCart={this.props.ClearCart} total={this.props.total} trueCart={this.props.trueCart} CartClass={this.props.CartClass} CheckOut={this.props.CheckOut}/>
-    </div>
-      <div style={bods}>
-        <PokeGroup pokemon={this.props.pokemon} Creator={this.props.Creator} style={this.props.styleMe} addMe={this.props.addMe} />
-        <PokeGroup pokemon={this.props.pokemon} Creator={this.props.Creator} style={this.props.styleMe} addMe={this.props.addMe} />
-        <PokeGroup pokemon={this.props.pokemon} Creator={this.props.Creator} style={this.props.styleMe} addMe={this.props.addMe} />
-        <PokeGroup pokemon={this.props.pokemon} Creator={this.props.Creator} style={this.props.styleMe} addMe={this.props.addMe} />
+      <div>
+        <div style={style}>
+          <CartScreen 
+            ClearCart={this.props.ClearCart} 
+            total={this.props.total} 
+            trueCart={this.props.trueCart} 
+            CartClass={this.props.CartClass} 
+            CheckOut={this.props.CheckOut}
+          />
+        </div>
+        <div style={bods}>
+          {[1,1,1,1].map((item,i) => (
+            <PokeGroup 
+              key={i} 
+              pokemon={this.props.pokemon} 
+              Creator={this.props.Creator} 
+              style={this.props.styleMe} 
+              addMe={this.props.addMe} 
+            />))
+          }
+         </div>
       </div>
-    </div>
-      
     )
   }
 }

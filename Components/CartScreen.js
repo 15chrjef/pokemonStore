@@ -22,6 +22,13 @@ export default class CartScreen extends React.Component{
     return(
       <div className={this.props.CartClass}>
         <h2>Your Cart</h2>
+        <a 
+          href="#" 
+          className="close-thik"
+          onClick={function(){
+              this.props.CheckOut()}.bind(this)
+          }>
+        </a>
         <h4 className='cartyCart' style={style}>
           {this.props.trueCart.map(function(pokemon){
             return <div key={pokemon.key}>{pokemon.data}</div>

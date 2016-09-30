@@ -7,12 +7,16 @@ export default class PokeGroup extends React.Component {
     super(props)
   }
     render(){
+      var self = this;
       return(
         <div style={this.props.styleMe}>
-          <Pokemon Creator={this.props.Creator} addMe={this.props.addMe} />
-          <Pokemon Creator={this.props.Creator} addMe={this.props.addMe} />
-          <Pokemon Creator={this.props.Creator} addMe={this.props.addMe} />
-          <Pokemon Creator={this.props.Creator} addMe={this.props.addMe} />
+          {[1,1,1,1].map((item,i) => (
+            <Pokemon 
+              key={i} 
+              Creator={this.props.Creator} 
+              addMe={this.props.addMe} 
+            />
+          ))} 
         </div>
       )
     }
