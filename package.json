@@ -1,0 +1,17 @@
+{
+  "name": "jeff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pokedex-promise-v2": "^3.0.1",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-overlay": "^0.1.7"
+  }
+}

@@ -1,0 +1,31 @@
+#app{
+  display: flex;
+}
+
+.cartScreen{
+  z-index: 100;
+  position: absolute;
+  display: flex;
+  background-color: white;
+  border-style: solid;
+  border-color: #3F61A6;
+  border-width: 8px;
+  text-align: center;
+  width: 60vw;
+  height: auto;
+  opacity: .75;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.cartHide{
+  z-index: 100;
+  position: absolute;
+  display: none;
+  height: auto;
+}
+
+button:active {
+  transform: translateY(2px);
+}
