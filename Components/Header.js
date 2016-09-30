@@ -53,7 +53,7 @@ class Header extends React.Component {
         <img style={image} src='http://www.pngall.com/wp-content/uploads/2016/06/Pokemon-PNG-Pic.png'/>
         <div style={nonImage}>
           <Cart CheckOut={this.props.CheckOut}/>
-          <button onClick={()=>(this.props.CheckOut())} style={noMarg}>Check Out ({this.props.cart})</button>
+          <button onClick={()=>(this.props.CheckOut(event))} style={noMarg}>Check Out ({this.props.cart})</button>
         </div>
       </div>
     )

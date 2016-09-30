@@ -1,11 +1,13 @@
 import React from 'react';
 import PokeGroup from './PokeGroup'
 import CartScreen from './CartScreen.js'
+import Results from './Results.js'
 class Body extends React.Component {
   constructor(props){
     super(props)
   }
   render(){
+    var self = this;
     var bods = {
       display: 'flex',
       fontSize: '40px',
@@ -23,10 +25,11 @@ class Body extends React.Component {
       <CartScreen ClearCart={this.props.ClearCart} total={this.props.total} trueCart={this.props.trueCart} CartClass={this.props.CartClass} CheckOut={this.props.CheckOut}/>
     </div>
       <div style={bods}>
-        <PokeGroup pokemon={this.props.pokemon} Creator={this.props.Creator} style={this.props.styleMe} addMe={this.props.addMe} />
-        <PokeGroup pokemon={this.props.pokemon} Creator={this.props.Creator} style={this.props.styleMe} addMe={this.props.addMe} />
-        <PokeGroup pokemon={this.props.pokemon} Creator={this.props.Creator} style={this.props.styleMe} addMe={this.props.addMe} />
-        <PokeGroup pokemon={this.props.pokemon} Creator={this.props.Creator} style={this.props.styleMe} addMe={this.props.addMe} />
+        {['','','',''].map(function(item,i){
+            return <PokeGroup key={i} pokemon={this.props.pokemon} Creator={this.props.Creator}
+             style={this.props.styleMe} addMe={this.props.addMe} />
+          }.bind(self))
+        }
       </div>
     </div>
       

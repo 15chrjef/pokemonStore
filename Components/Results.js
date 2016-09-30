@@ -1,5 +1,5 @@
 import React from 'react'; 
-class Pokemon extends React.Component {
+class Results extends React.Component {
   constructor(props){
     super(props)
     this.state ={
@@ -14,8 +14,8 @@ class Pokemon extends React.Component {
     borderColor: '#3F61E0',
     borderWidth: '8px',
     backgroundColor: '#F2CB05',
-    width: '15vw',
-    height: '25vh',
+    width: '90vw',
+    height: '90vh',
     display: 'text',
     textAlign: 'center',
     fontSize: '20px',
@@ -40,19 +40,10 @@ class Pokemon extends React.Component {
         <div>
           Price: ${this.state.mon[2]}
         </div>
-        <button style={hand} data={this.state.mon} 
-          onClick={ function(){
-              event.stopImmediatePropagation()
-              event.preventDefault()
-              event.stopPropagation()
-              this.props.addMe(event,this.state.mon[2],
-              this.state.mon[0]).bind(this)
-            }.bind(this)
-          }>Add to Cart
-        </button>
+        <button style={hand} data={this.state.mon} onClick={()=>this.props.addMe(event,this.state.mon[2],this.state.mon[0])}>Add to Cart</button>
       </div>
     )
   }
 }
 
-export default Pokemon;
+export default Results;

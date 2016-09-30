@@ -144,7 +144,7 @@ class App extends React.Component{
       trueCart: []
     }
   }
-  Creator(){
+  Creator(event){
     var myPoke = pokes[Math.floor(Math.random() * pokes.length)]
     return myPoke
   }
@@ -159,7 +159,9 @@ class App extends React.Component{
     })
   }
   AddPokemon(event,price, poke){
+    event.stopImmediatePropagation()
     event.preventDefault()
+    event.stopPropagation()
     var myPoke = poke.slice(0,1).toUpperCase() + poke.slice(1);
     var storage = {}
     Object.assign(storage, this.state.pokemon)
@@ -176,11 +178,7 @@ class App extends React.Component{
             key:{writable: true, configurable: true, value:key + storage[key]}
           })
         newCart.push(obj)
-      }
-    //var string = 
-    // var newCart = this.state.trueCart.slice()
-    // newCart.push(string)
-    // console.log('newCart', newCart)
+    }
     this.setState({
       cartCount: typeof this.state.cartCount == 'number' ? this.state.cartCount + 1 : 1,
       total: this.state.total + price,

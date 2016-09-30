@@ -19,6 +19,7 @@ export default class CartScreen extends React.Component{
       borderRadius: '5px',
       marginBottom: '20px'
     }
+    var self = this;
     return(
       <div className={this.props.CartClass}>
         <h2>Your Cart</h2>
@@ -34,8 +35,8 @@ export default class CartScreen extends React.Component{
             this.props.ClearCart()
             setTimeout(function(){
               alert('Your Pokemon will ship and be delivered in two to three weeks!')
-            }, 200).bind(this)
-          }.bind(this)} style={buttony}>Buy Now!</button>
+            }, 200).bind(self)
+          }.bind(self)} style={buttony}>Buy Now!</button>
         </div>
       </div>
     )
