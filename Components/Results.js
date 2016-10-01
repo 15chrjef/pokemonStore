@@ -1,54 +1,70 @@
 import React from 'react'; 
-class Results extends React.Component {
+class Pokemon extends React.Component {
   constructor(props){
     super(props)
-    this.state ={
-      mon: this.props.Creator()
-    }
   }
   render(){
-    var name = this.state.mon
-    var rname = (name[0][0].toUpperCase() + name[0].slice(1))
+    var pokedata = this.props.SearchResult || [['fad'],['fad'],['fad']]
+    var name = (pokedata[0][0].toUpperCase() + pokedata[0].slice(1)) 
     var border ={
     borderStyle: 'solid',
     borderColor: '#3F61E0',
     borderWidth: '8px',
-    backgroundColor: '#F2CB05',
-    width: '90vw',
-    height: '90vh',
+    backgroundColor: '#F2F2F2',
+    width: '68vw',
+    height: '100vh',
     display: 'text',
     textAlign: 'center',
-    fontSize: '20px',
+    fontSize: '50px',
     marginTop: '8px',
-    marginBottom: '15px',
+    marginBottom: '20px',
     borderRadius: '15px',
-    boxShadow: '10px 21px 55px -10px rgba(0,0,0,0.75)'
+    boxShadow: '3px 3px 5px 0px rgba(0,0,0,0.75)',
+    fontFamily: 'Tahoma, Geneva, sans-serif ' 
    }
    var hand={
-    cursor: 'pointer'
+    fontFamily: 'Tahoma, Geneva, sans-serif ',
+    marginTop: '30px',
+    marginBottom: '25px',
+    height: '7vh',
+    width: '20vw'
    }
     var imgSize = {
-      height: '10vh',
-      width: '10vw'
+      height: '50vh',
+      width: '50vw'
     }
     return (
-      <div style={border}>   
-        <img src={this.state.mon[1]} />
+      <div className={this.props.SearchClass} style={border}>   
+        <img style={imgSize} src={pokedata[1]} />
         <div>
-          {rname}
+          {name}
         </div>
         <div>
-          Price: ${this.state.mon[2]}
+          Price: ${pokedata[2]}
         </div>
         <button 
-          style={hand} 
-          data={this.state.mon} 
-          onClick={()=>this.props.addMe(event,this.state.mon[2],this.state.mon[0])}>
-        Add to Cart
+          className='hvr-fade'
+          style = {hand}
+          data={pokedata} 
+          onClick={
+            () => {
+              if(pokedata){
+                return this.props.addMe(event,pokedata[2], pokedata[0])
+              }
+              return ''
+            }
+          }
+        >Add to Cart
+        </button>
+        <button 
+           onClick={() => this.props.ClearSearch()}
+          className='butty'
+          style = {hand}
+        >Clear  
         </button>
       </div>
     )
   }
 }
 
-export default Results;
+export default Pokemon;

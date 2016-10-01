@@ -5,44 +5,59 @@ class SearchBar extends React.Component {
   }
   render(){
     var style = {
-      height: '3vh',
-      width: '14vw',
-      borderRadius: '5px',
-      boxShadow: '10px 10px 10px -10px rgba(0,0,0,0.75)',
-      marginTop: '40px'
-    }
-    var myStyle = {
-      width: '6vw',  
-      height: '4vh',
-      borderRadius: '5px',
+      fontFamily: 'Tahoma, Geneva, sans-serif ',
       marginTop: '20px',
-      boxShadow: '10px 10px 10px -10px rgba(0,0,0,0.75)',
-      cursor: 'pointer',
-      outline:'none',
-      backgroundColor: '#3F61E0',
-      color:'white',
-      fontSize: '13px',
+      marginRight: '1px',
+      height: '3.5vh',
+      width: '14vw',
+      paddingLeft:'15px',
+      borderRadius:'6px',
+      border:'none',
+      color:'#F2F2F2',
+      fontSize:'11px',
+      color: 'black',
+      backgroundColor:'#fffbf8',
+      outline: 'none',
+      boxShadow:
+      `0 1px 1px 0 rgba(199, 199, 199, 0.55),
+            0 2px 2px 1px black,
+            0 -1px 1px 0 #f2f2f2 inset,
+            0 15px 15px 0 rgba(41, 41, 41, 0.09) inset`
     }
+
+    var myStyle = {
+      marginTop: '30px',
+      fontSize:'14px',
+      fontFamily: 'Tahoma, Geneva, sans-serif ' 
+    }
+
     var flex={
       display:'flex',
       alignItems: 'center',
-      flexDirection: 'column'
-    }
+      flexDirection: 'row',
+      verticalAlign: 'middle'
+    } 
     return(
-      <div style={flex}>
+      <form 
+      onSubmit={(event) => {
+          setTimeout(() => this.props.MySearch(event), 200)
+          event.target.value = ''
+        }} 
+      style={flex}
+      >
         <input 
           onChange={this.props.HandleChange} 
           style={style} 
           type='text' 
           placeholder='Search... '
+          value = {this.props.input}
         />
         <button 
-          onClick={function(){
-            setTimeout(this.props.MySearch, 200)}
-            .bind(this)} 
-          style={myStyle}>Search
+          className='hvr-fade'
+          style={myStyle}
+        >Go!
         </button>
-      </div>
+      </form>
     ) 
   }
 }

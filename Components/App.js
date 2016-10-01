@@ -139,7 +139,10 @@ class App extends React.Component{
       cartCount: 'My Cart',
       total: 0,
       pokemon: {},
-      search: 'Search...',
+      search: '',
+      searchClass: 'hidePoke',
+      OppSearch:'',
+      searchResult: '',
       cartClass: 'cartHide',
       trueCart: []
     }
@@ -153,7 +156,7 @@ class App extends React.Component{
       cartCount: 'My Cart',
       total: 0,
       pokemon: {},
-      search: 'Search...',
+      search: '',
       cartClass: 'cartHide',
       trueCart: []
     })
@@ -172,15 +175,19 @@ class App extends React.Component{
       for(var key in storage){
         var obj = Object.create(
           Object.prototype, { 
-            data:{writable: true, configurable: true, value: storage[key] + 'x of ' + key},
-            key:{writable: true, configurable: true, value:key + storage[key]}
+            data:{
+              writable: true, 
+              configurable: true, 
+              value: storage[key] + 'x of ' + key
+            },
+            key:{
+              writable: true, 
+              configurable: true, 
+              value:key + storage[key]
+            }
           })
         newCart.push(obj)
       }
-    //var string = 
-    // var newCart = this.state.trueCart.slice()
-    // newCart.push(string)
-    // console.log('newCart', newCart)
     this.setState({
       cartCount: typeof this.state.cartCount == 'number' ? this.state.cartCount + 1 : 1,
       total: this.state.total + price,
@@ -200,16 +207,43 @@ class App extends React.Component{
       })
     }
   }
-  MySearch(){
+  Searched(event){
+    if(this.state.SearchResult === undefined){
+      this.setState({
+        searchClass: 'hidePoke'
+      })
+    }
+    else{
+      this.setState({
+        searchClass: 'showPoke'
+      })
+    }
+  }
+  ClearSearch(){
+    this.setState({
+      search: '',
+      searchClass: 'hidePoke',
+      OppSearch:'',
+      searchResult: ''
+    })
+  }
+  MySearch(event){
       var self = this;
       var name = this.state.search
       var searchName = name.toLowerCase()
+      this.setState({
+        search: ''
+      })
       for(var i = 0; i < pokes.length; i++){
         if( pokes[i] && searchName === pokes[i][0]){
-          return alert(pokes[i][0] + ' is available for purchase!')
+          this.setState({
+            SearchResult: pokes[i]
+          })  
+          this.Searched()
+          return ''
         }
       }
-      return alert('Sorry, we do not have any ' + name)
+      return alert('Sorry, we do not have any ' + (name || 'Search...'))
     }
   HandleChange(event){
     var self = this;
@@ -219,35 +253,43 @@ class App extends React.Component{
   }
   render(){
     var appy = {
+      marginTop:'20px',
+      marginBottom:'20px',
       display:'flex',
+      marginLeft: '3vw',
       flexDirection: 'Column',
       border: '15px solid #3F61E0',
       borderRadius: '15px',
-      width: '95vw',
+      width: '90vw',
       alignItems: 'center',
-      backgroundColor: '#F2F2F2',
+      backgroundColor: '#F2CB05',
       boxShadow: '10px 21px 55px -10px rgba(0,0,0,0.75)'
     }
     return (
-      <div style={appy}>
-        <Header 
-          CheckOut={this.CheckOut.bind(this)} 
-          HandleChange={this.HandleChange.bind(this)} 
-          MySearch={this.MySearch.bind(this)} 
-          CheckOut={this.CheckOut.bind(this)} 
-          cart={this.state.cartCount}
-        />
-        <Body 
-          ClearCart={this.ClearCart.bind(this)} 
-          Creator={this.Creator.bind(this)} 
-          total={this.state.total} 
-          pokemon={this.state.pokemon} 
-          trueCart={this.state.trueCart} 
-          CartClass={this.state.cartClass} 
-          CheckOut={this.CheckOut.bind(this)} 
-          addMe={this.AddPokemon.bind(this)}
-        />
-      </div>
+        <div style={appy}>
+          <Header 
+            CheckOut={this.CheckOut.bind(this)} 
+            HandleChange={this.HandleChange.bind(this)} 
+            MySearch={this.MySearch.bind(this)} 
+            CheckOut={this.CheckOut.bind(this)} 
+            cart={this.state.cartCount}
+            input={this.state.search}
+          />
+          <Body 
+            ClearCart={this.ClearCart.bind(this)} 
+            Creator={this.Creator.bind(this)} 
+            total={this.state.total} 
+            pokemon={this.state.pokemon} 
+            trueCart={this.state.trueCart} 
+            CartClass={this.state.cartClass} 
+            CheckOut={this.CheckOut.bind(this)} 
+            addMe={this.AddPokemon.bind(this)}
+            SearchClass={this.state.searchClass}
+            MySearch={this.MySearch.bind(this)} 
+            SearchResult={this.state.SearchResult}
+            ClearSearch={this.ClearSearch.bind(this)}
+          />
+        </div>
     )
   }
 }

@@ -13,19 +13,22 @@ class Pokemon extends React.Component {
     borderStyle: 'solid',
     borderColor: '#3F61E0',
     borderWidth: '8px',
-    backgroundColor: '#F2CB05',
-    width: '15vw',
+    backgroundColor: '#F2F2F2',
+    width: '17vw',
     height: '25vh',
     display: 'text',
     textAlign: 'center',
     fontSize: '20px',
     marginTop: '8px',
-    marginBottom: '15px',
+    marginBottom: '20px',
     borderRadius: '15px',
-    boxShadow: '10px 21px 55px -10px rgba(0,0,0,0.75)'
+    boxShadow: '3px 3px 5px 0px rgba(0,0,0,0.75)',
+    fontFamily: 'Tahoma, Geneva, sans-serif ' 
    }
    var hand={
-    cursor: 'pointer'
+    fontFamily: 'Tahoma, Geneva, sans-serif ',
+    marginTop: '8px',
+    marginBottom: '25px',
    }
     var imgSize = {
       height: '10vh',
@@ -40,7 +43,14 @@ class Pokemon extends React.Component {
         <div>
           Price: ${this.state.mon[2]}
         </div>
-        <button style={hand} data={this.state.mon} onClick={()=>this.props.addMe(event,this.state.mon[2],this.state.mon[0])}>Add to Cart</button>
+        <button 
+          className='hvr-fade'
+          style = {hand}
+          data={this.state.mon} 
+          onClick={
+            () => this.props.addMe(event,this.state.mon[2],this.state.mon[0])}
+        >Add to Cart
+        </button>
       </div>
     )
   }

@@ -2,13 +2,24 @@
   display: flex;
 }
 
+.showPoke{
+  z-index: 99;
+}
+
+.hidePoke{
+  z-index: 99;
+  display: none;
+  position: absolute;
+  display: none;
+  height: auto;
+}
 .cartScreen{
   z-index: 100;
   position: absolute;
   display: flex;
   background-color: white;
   border-style: solid;
-  border-color: #3F61A6;
+  border-color: #3F61E0;
   border-width: 8px;
   text-align: center;
   width: 60vw;
@@ -45,16 +56,52 @@ button:active {
   color: #808080;
 }
 
-​.header
-{
-    height:100px;
+.hvr-fade {
+  outline:none;
+  font-size: 12px;
+  cursor: pointer;
+  height: 4vh;
+  border-radius:5px;
+  color:black;
+  margin-bottom: 10px;
+  display: inline-block;
+  background-color: #F2F2F2;
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  transition-property: color, background-color;
+  opacity: 1;
 }
-.content
-{
-    position:absolute;
-    top: 100px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    overflow-y:scroll;        
-}​
+
+.butty{
+  outline:none;
+  font-size: 12px;
+  cursor: pointer;
+  height: 4vh;
+  border-radius:5px;
+  color:black;
+  margin-bottom: 10px;
+  display: inline-block;
+  background-color: #F2F2F2;
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  transition-property: color, background-color;
+  opacity: 1;
+}
+
+.butty:hover{
+   background-color: red;
+  outline: hidden;
+}
+
+.hvr-fade:hover {
+  background-color: #F2CB05;
+  outline: hidden;
+}

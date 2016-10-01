@@ -1,6 +1,7 @@
 import React from 'react';
 import PokeGroup from './PokeGroup'
 import CartScreen from './CartScreen.js'
+import Results from './Results.js'
 class Body extends React.Component {
   constructor(props){
     super(props)
@@ -26,6 +27,15 @@ class Body extends React.Component {
             trueCart={this.props.trueCart} 
             CartClass={this.props.CartClass} 
             CheckOut={this.props.CheckOut}
+          />
+          <Results  
+            className={this.props.SearchClass}           
+            Creator={this.props.Creator} 
+            SearchClass = {this.props.SearchClass}
+            SearchResult = {this.props.SearchResult}
+            addMe={this.props.addMe} 
+            MySearch={this.props.MySearch}
+            ClearSearch={this.props.ClearSearch}
           />
         </div>
         <div style={bods}>

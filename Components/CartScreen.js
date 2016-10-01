@@ -8,41 +8,45 @@ export default class CartScreen extends React.Component{
     var style={
       fontSize: '22px'
     }
+    var font = {
+      fontFamily: 'Tahoma, Geneva, sans-serif '
+    }
     var buttony = {
-      color:'white',
-      width: '90px',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-around',
-      alignItems: 'center',
-      backgroundColor: '#ABACAB',
-      borderRadius: '5px',
-      marginBottom: '20px'
+      marginBottom: '20px',
+      fontSize: '16px',
+      fontFamily: 'Tahoma, Geneva, sans-serif ',
+      opacity: '1'
     }
     return(
       <div className={this.props.CartClass}>
-        <h2>Your Cart</h2>
+        <h2 style={font}>My Cart</h2>
         <a 
           href="#" 
           className="close-thik"
-          onClick={function(){
-              this.props.CheckOut()}.bind(this)
-          }>
+          onClick={() => this.props.CheckOut()}
+        >
         </a>
-        <h4 className='cartyCart' style={style}>
-          {this.props.trueCart.map(function(pokemon){
-            return <div key={pokemon.key}>{pokemon.data}</div>
-          })}
+        <h4 
+        className='cartyCart' 
+        style={style}>
+          {this.props.trueCart.
+            map((pokemon) => <div key={pokemon.key}>{pokemon.data}</div>
+          )}
         </h4>
-        <h3>Total: ${this.props.total}</h3>
+        <h3 style={font}>Total: ${this.props.total}</h3>
         <div style={style}>
-          <button onClick={function(){
-            this.props.CheckOut()
-            this.props.ClearCart()
-            setTimeout(function(){
-              alert('Your Pokemon will ship and be delivered in two to three weeks!')
-            }, 200).bind(this)
-          }.bind(this)} style={buttony}>Buy Now!</button>
+          <button 
+            onClick={() => {
+              event.preventDefault()
+              this.props.CheckOut()
+              this.props.ClearCart()
+              setTimeout(() => {
+                alert('Your Pokemon will ship and be delivered in two to three weeks!')
+              }, 200)
+            }} 
+            className="hvr-fade"
+            style={buttony}>Buy Now!
+          </button>
         </div>
       </div>
     )
